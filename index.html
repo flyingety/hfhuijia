@@ -3,40 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wild Guard - Protect Endangered Wildlife</title>
+    <title>WILD GUARD | Wildlife Conservation</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
 
         :root {
-            --primary: #5d4037; /* Earthy Brown */
-            --secondary: #ed6a5a; /* Coral/Alert Orange */
-            --accent: #ffb74d; /* Sunset Orange */
-            --light: #fdf5e6; /* Ivory */
-            --dark: #263238; /* Deep Blue Grey */
-            --text: #455a64;
+            --primary: #5d4037; 
+            --secondary: #ed6a5a; 
+            --accent: #ffb74d; 
+            --light: #fdf5e6; 
+            --dark: #263238; 
+            --text: #333333;
             --white: #ffffff;
         }
 
         body {
             background-color: var(--light);
             color: var(--text);
+            font-family: 'Segoe UI', Arial, sans-serif;
             line-height: 1.6;
         }
 
+        /* --- Header --- */
         header {
+            background: #5d4037; /* Fallback color */
             background: linear-gradient(to right, var(--primary), var(--dark));
             color: var(--white);
             padding: 1rem 0;
             position: sticky;
             top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 999;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
         .container {
@@ -55,14 +57,10 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            font-size: 1.8rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
-
-        .logo i {
-            font-size: 2rem;
-            color: var(--accent);
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--white);
+            text-decoration: none;
         }
 
         nav ul {
@@ -70,144 +68,217 @@
             list-style: none;
         }
 
-        nav ul li {
-            margin-left: 2rem;
-        }
+        nav ul li { margin-left: 1.5rem; }
 
         nav ul li a {
             color: var(--white);
             text-decoration: none;
             font-weight: 500;
-            transition: all 0.3s ease;
-            padding: 0.5rem 0;
-            position: relative;
         }
 
-        nav ul li a:hover {
-            color: var(--accent);
-        }
-
-        nav ul li a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--accent);
-            transition: width 0.3s ease;
-        }
-
-        nav ul li a:hover::after {
-            width: 100%;
-        }
-
+        /* --- Hero Section --- */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1546182990-dffeafbe841d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
-            background-size: cover;
-            background-position: center;
-            height: 85vh;
+            position: relative;
+            height: 80vh;
+            min-height: 500px;
             display: flex;
             align-items: center;
+            justify-content: center;
             text-align: center;
             color: var(--white);
+            /* High quality wildlife image */
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
         }
 
         .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
+            z-index: 10;
+            padding: 0 20px;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+            font-size: clamp(2rem, 8vw, 4rem);
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
         }
 
         .hero p {
-            font-size: 1.4rem;
-            margin-bottom: 2rem;
-            font-weight: 300;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
+        /* --- Buttons --- */
         .btn {
             display: inline-block;
-            background-color: var(--secondary);
-            color: var(--white);
-            padding: 1rem 2.5rem;
-            border-radius: 5px;
+            background: var(--secondary);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 4px;
             text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
+            font-weight: bold;
+            transition: 0.3s;
             border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
         }
 
         .btn:hover {
-            background-color: var(--accent);
-            color: var(--primary);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            background: var(--accent);
+            transform: translateY(-2px);
         }
 
-        section {
-            padding: 6rem 0;
-        }
+        /* --- Content Sections --- */
+        section { padding: 80px 0; }
 
         .section-title {
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 50px;
         }
 
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 4px;
-            background-color: var(--secondary);
-        }
-
-        .about-content {
+        .grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
 
-        .about-img {
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-            border: 5px solid var(--white);
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
         }
 
-        .about-img img {
-            width: 100%;
-            height: auto;
+        .card i {
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+
+        /* --- Stats Section --- */
+        .stats-bar {
+            background: var(--primary);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .stat-num {
+            font-size: 2.5rem;
+            font-weight: bold;
             display: block;
-            transition: transform 0.6s ease;
         }
 
-        .about-img:hover img {
-            transform: scale(1.08);
+        /* --- Footer --- */
+        footer {
+            background: var(--dark);
+            color: #ccc;
+            padding: 50px 0 20px;
         }
 
-        .about-text h3 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary);
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
         }
 
-        .
+        h3 { color: white; margin-bottom: 20px; }
+
+        @media (max-width: 768px) {
+            nav ul { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-paw"></i> WILD GUARD
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#about">Mission</a></li>
+                    <li><a href="#initiatives">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Save Our Species</h1>
+            <p>Every 20 minutes, another species is pushed toward extinction. It’s time to stand up and fight for the voiceless inhabitants of our planet.</p>
+            <a href="#contact" class="btn">Join The Movement</a>
+        </div>
+    </section>
+
+    <section id="about" class="container">
+        <div class="section-title">
+            <h2>Our Global Mission</h2>
+            <p>Combining field action with scientific research to protect biodiversity.</p>
+        </div>
+        <div class="grid">
+            <div class="card">
+                <i class="fas fa-shield-cat"></i>
+                <h3>Anti-Poaching</h3>
+                <p>Equipping rangers with technology to stop illegal wildlife trade on the front lines.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-seedling"></i>
+                <h3>Habitat Restoration</h3>
+                <p>Rebuilding forest corridors and marine sanctuaries for animals to thrive.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-microscope"></i>
+                <h3>Genetic Research</h3>
+                <p>Using DNA science to ensure the long-term health of endangered populations.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="stats-bar">
+        <div class="container grid">
+            <div>
+                <span class="stat-num">850+</span>
+                <span>Species Protected</span>
+            </div>
+            <div>
+                <span class="stat-num">1.2M</span>
+                <span>Acres Guarded</span>
+            </div>
+            <div>
+                <span class="stat-num">3,200</span>
+                <span>Active Rangers</span>
+            </div>
+        </div>
+    </div>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3>WILD GUARD</h3>
+                    <p>Protecting the wild since 2010. Your support provides food, medical care, and safety for endangered animals.</p>
+                </div>
+                <div>
+                    <h3>Contact Us</h3>
+                    <p>Email: help@wildguard.org</p>
+                    <p>Phone: +1 800-WILD-SOS</p>
+                </div>
+                <div>
+                    <h3>Newsletter</h3>
+                    <p>Stay updated on our latest rescues.</p>
+                </div>
+            </div>
+            <div style="text-align: center; border-top: 1px solid #444; padding-top: 20px;">
+                <p>&copy; 2026 Wild Guard. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
